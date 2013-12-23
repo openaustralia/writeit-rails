@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 2.0.0
+env:
+  - RAILS_VERSION=4.0.0
+gemfile:
+  - Gemfile
+before_script:
+  - bundle install --without production
