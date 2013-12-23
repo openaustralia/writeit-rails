@@ -1,5 +1,4 @@
 require "models/message"
-require 'spec_helper'
 
 describe Message do
   context "with attributes" do

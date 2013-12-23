@@ -6,4 +6,5 @@ env:
 gemfile:
   - Gemfile
 before_script:
+  - ./start_local_popit_api.bash
   - bundle install --without production
