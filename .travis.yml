@@ -7,6 +7,6 @@ env:
 gemfile:
   - Gemfile
 before_script:
-  - sudo apt-get install virtualenv
+  - sudo apt-get install python-virtualenv python-setuptools
   - ./start-local-writeit.bash
   - bundle install --without production
