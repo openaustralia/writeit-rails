@@ -1,6 +1,5 @@
 language:
   - ruby
-  - python
 rvm:
   - 2.0.0
 env:
@@ -8,6 +7,6 @@ env:
 gemfile:
   - Gemfile
 before_script:
-  - pip install --user $USER virtualenv
+  - sudo apt-get install virtualenv
   - ./start-local-writeit.bash
   - bundle install --without production
