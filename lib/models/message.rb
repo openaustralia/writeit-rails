@@ -1,4 +1,6 @@
 require 'active_record'
 
-class Message < ActiveRecord::Base
+class Message
+    attr_accessor :subject
+    attr_accessor :content
 end
