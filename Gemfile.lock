@@ -87,5 +87,6 @@ PLATFORMS
 
 DEPENDENCIES
   rails (= 4.0.0)
+  rake
   rspec
   rspec-core
