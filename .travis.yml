@@ -1,4 +1,6 @@
-language: ruby
+language:
+  - ruby
+  - python
 rvm:
   - 2.0.0
 env:
