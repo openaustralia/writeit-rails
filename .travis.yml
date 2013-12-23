@@ -8,6 +8,6 @@ env:
 gemfile:
   - Gemfile
 before_script:
-  - pip install virtualenv
+  - pip install --user $USER virtualenv
   - ./start-local-writeit.bash
   - bundle install --without production
