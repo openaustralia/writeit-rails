@@ -1,4 +1,4 @@
-require "models/message"
+require 'models/message'
 
 describe Message do
   context "with attributes" do
