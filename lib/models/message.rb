@@ -11,9 +11,17 @@ class Message
     attr_accessor :author_name
     attr_accessor :author_email
 
-    def push_to_api
+    def validate
         
-        raise ArgumentError, 'No recipients, please add some first' unless self.recipients.any?
+        wrong_recipients = self.recipients.nil?
+        if not wrong_recipients
+            wrong_recipients = not(self.recipients.any?)
+        end
+        raise ArgumentError, 'No recipients, please add some first' unless not wrong_recipients
+    end
+
+    def push_to_api
+        validate
         
         data = {
             :author_name => self.author_name,

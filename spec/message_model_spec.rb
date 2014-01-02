@@ -79,10 +79,15 @@ describe Message do
       message.author_email = "fiera@ciudadanointeligente.org"
       message.writeitinstance = @writeitinstance
 
+      #I haven't even created the recipients thing
+
+      expect { message.push_to_api }.to raise_error(ArgumentError, "No recipients, please add some first")
+
       #look empty
       message.recipients = []
 
       expect { message.push_to_api }.to raise_error(ArgumentError, "No recipients, please add some first")
+
     end
   end
 
