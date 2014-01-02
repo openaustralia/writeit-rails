@@ -12,7 +12,9 @@ class Message
     attr_accessor :author_email
 
     def push_to_api
-
+        
+        raise ArgumentError, 'No recipients, please add some first' unless self.recipients.any?
+        
         data = {
             :author_name => self.author_name,
             :author_email => self.author_email,
