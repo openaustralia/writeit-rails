@@ -46,12 +46,13 @@ describe Message do
       writeitinstance.api_key = 'a'
       message.subject = "this is the subject"
       message.content = "this is the content"
+      message.author_name = "Fiera"
+      message.author_email = "fiera@ciudadanointeligente.org"
       message.writeitinstance = writeitinstance
       message.recipients = ['http://localhost:3002/api/persons/5008048c7a317e126400046d', 'http://localhost:3002/api/persons/500804717a317e126400005e']
       message.push_to_api
       message.remote_id.should_not be_nil
       message.remote_uri.should_not be_nil
-      puts writeitinstance.base_url + "/"+ message.remote_uri
       response = RestClient.get writeitinstance.base_url + message.remote_uri ,
        {:params => {:format => 'json', 
         'username' => writeitinstance.username, 
@@ -60,6 +61,8 @@ describe Message do
       created_message = JSON.parse(response.body)
       created_message['content'].should eql "this is the content"
       created_message['subject'].should eql "this is the subject"
+      created_message['author_name'].should eql "Fiera"
+      created_message['author_email'].should eql "fiera@ciudadanointeligente.org"
 
     end
   end
