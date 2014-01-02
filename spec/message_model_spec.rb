@@ -1,12 +1,15 @@
 require 'models/message'
 require "models/writeitinstance"
+require 'json'
 
 describe Message do
   context "with attributes" do
-    it "has subject, remote_id, remote_uri and content" do
+    it "has author_name, author_email,subject, remote_id, remote_uri and content" do
       message = Message.new
       message.subject = "Hey this is a subject"
       message.content = "Hey this is a content"
+      message.author_name = "Fiera feroz"
+      message.author_email = "fiera@ciudadanointeligente.org"
       message.remote_id = 1
       message.remote_uri = "/message/1/"
       message.subject.should eql "Hey this is a subject"
@@ -34,11 +37,11 @@ describe Message do
 
   end
   context "interacting through the API" do
-    xit "pushes to the API" do
+    it "pushes to the API" do
       message = Message.new
       writeitinstance = WriteItInstance.new
-      writeitinstance.url = '/instances/1/'
-      writeitinstance.base_url = 'http://localhost:3001'
+      writeitinstance.url = '/api/v1/instance/1/'
+      writeitinstance.base_url = 'http://127.0.0.1.xip.io:3001'
       writeitinstance.username = 'admin'
       writeitinstance.api_key = 'a'
       message.subject = "this is the subject"
@@ -48,9 +51,15 @@ describe Message do
       message.push_to_api
       message.remote_id.should_not be_nil
       message.remote_uri.should_not be_nil
-      response = RestClient.get writeitinstance.base_url + '/api/v1' + writeitinstance.url + '?format=json&username=' + writeitinstance.username + '&api_key=' + writeitinstance.api_key
+      puts writeitinstance.base_url + "/"+ message.remote_uri
+      response = RestClient.get writeitinstance.base_url + message.remote_uri ,
+       {:params => {:format => 'json', 
+        'username' => writeitinstance.username, 
+        'api_key' => writeitinstance.api_key}}
       response.code.should equal 200
-
+      created_message = JSON.parse(response.body)
+      created_message['content'].should eql "this is the content"
+      created_message['subject'].should eql "this is the subject"
 
     end
   end
