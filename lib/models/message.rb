@@ -18,6 +18,13 @@ class Message
             wrong_recipients = not(self.recipients.any?)
         end
         raise ArgumentError, 'No recipients, please add some first' unless not wrong_recipients
+
+        validates_author_name = self.author_name.blank?
+        raise ArgumentError, 'No author, set it first' unless not validates_author_name
+
+        validates_instance = self.writeitinstance.nil?
+        raise ArgumentError, 'No instance, please set one first' unless not validates_instance
+
     end
 
     def push_to_api

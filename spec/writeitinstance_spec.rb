@@ -1,4 +1,5 @@
 require "models/writeitinstance"
+require "spec_helper"
 
 describe WriteItInstance do
   context "The creation" do

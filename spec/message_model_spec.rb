@@ -1,5 +1,6 @@
 require 'models/message'
 require "models/writeitinstance"
+require "spec_helper"
 require 'json'
 
 describe Message do
@@ -36,7 +37,7 @@ describe Message do
     end
 
   end
-  context "interacting through the API" do
+  context "Interacting through the API" do
     before(:each) do
       @writeitinstance = WriteItInstance.new
       @writeitinstance.url = '/api/v1/instance/1/'
@@ -71,6 +72,9 @@ describe Message do
       created_message['author_email'].should eql "fiera@ciudadanointeligente.org"
 
     end
+    
+  end
+  context "Validation" do
     it "raises error when no recipients" do
       message = Message.new
       message.subject = "this is the subject"
@@ -89,7 +93,29 @@ describe Message do
       expect { message.push_to_api }.to raise_error(ArgumentError, "No recipients, please add some first")
 
     end
+    it "raises an error when there is no author" do
+      message = Message.new
+      message.subject = "this is the subject"
+      message.content = "this is the content"
+      message.writeitinstance = @writeitinstance
+      message.recipients = ['http://localhost:3002/api/persons/5008048c7a317e126400046d',
+        'http://localhost:3002/api/persons/500804717a317e126400005e']
+
+      expect { message.push_to_api }.to raise_error(ArgumentError, "No author, set it first")
+    end
+    it "raises an error when there is no writeitinstance" do
+      message = Message.new
+      message.subject = "this is the subject"
+      message.content = "this is the content"
+      message.author_name = "Fiera"
+      message.author_email = "fiera@ciudadanointeligente.org"
+      message.recipients = ['http://localhost:3002/api/persons/5008048c7a317e126400046d',
+        'http://localhost:3002/api/persons/500804717a317e126400005e']
+
+      expect { message.push_to_api }.to raise_error(ArgumentError, "No instance, please set one first")
+    end
   end
 
-
 end
+
+
