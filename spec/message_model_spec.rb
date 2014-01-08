@@ -1,5 +1,4 @@
-require 'writeit-rails/message'
-require "writeit-rails/writeitinstance"
+require "writeit-rails"
 require "spec_helper"
 require 'json'
 
