@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "A simple hello world gem"
   s.authors     = ["Fundación Ciudadano Inteligente"]
   s.email       = 'lab@ciudadanointeligente.org'
-  s.files       = ["lib/models.rb"]
+  s.files       = `git ls-files`.split("\n")
   s.homepage    = 'http://rubygems.org/gems/writeit-rails'
   s.license       = 'Apache License, Version 2.0'
 end
