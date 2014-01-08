@@ -1,4 +1,3 @@
-require 'active_record'
 require 'json'
 
 class Message
@@ -19,7 +18,7 @@ class Message
         end
         raise ArgumentError, 'No recipients, please add some first' unless not wrong_recipients
 
-        validates_author_name = self.author_name.blank?
+        validates_author_name = self.author_name.nil?
         raise ArgumentError, 'No author, set it first' unless not validates_author_name
 
         validates_instance = self.writeitinstance.nil?

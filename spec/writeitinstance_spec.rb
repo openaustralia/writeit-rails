@@ -1,4 +1,4 @@
-require "models/writeitinstance"
+require "writeit-rails/writeitinstance"
 require "spec_helper"
 
 describe WriteItInstance do

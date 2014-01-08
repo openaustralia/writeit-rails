@@ -1,5 +1,5 @@
-require 'models/message'
-require "models/writeitinstance"
+require 'writeit-rails/message'
+require "writeit-rails/writeitinstance"
 require "spec_helper"
 require 'json'
 
