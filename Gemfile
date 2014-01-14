@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'rails', '4.0.0'
+gem 'rest-client' '1.6.7'
 
 
 

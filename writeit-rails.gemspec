@@ -9,4 +9,5 @@ Gem::Specification.new do |s|
   s.files       = `git ls-files`.split("\n")
   s.homepage    = 'http://rubygems.org/gems/writeit-rails'
   s.license       = 'Apache License, Version 2.0'
+  s.requirements << 'rest-client'
 end
