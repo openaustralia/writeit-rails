@@ -3,8 +3,12 @@ class WriteItInstance
     attr_accessor :base_url
     attr_accessor :username
     attr_accessor :api_key
+    attr_accessor :per_page
     attr_reader   :errors
 
+    def per_page
+        @per_page || 20
+    end
 
     def validate
     	authorization = 'ApiKey %{username}:%{api_key}' % {

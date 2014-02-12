@@ -13,6 +13,7 @@ describe WriteItInstance do
       writeitinstance.url.should eql '/instances/1/'
       writeitinstance.username.should eql 'username'
       writeitinstance.api_key.should eql 'api_key'
+      writeitinstance.per_page.should eql 20
     end
   end
   context "Validation" do
