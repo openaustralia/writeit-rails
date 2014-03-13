@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'writeit-rails'
-  s.version     = '0.0.3'
-  s.date        = '2013-12-22'
+  s.version     = '0.0.4'
+  s.date        = '2014-03-13'
   s.summary     = "This Gem provides a basic api client for Write-it"
   s.description = "A simple hello world gem"
   s.authors     = ["Ciudadano Inteligente"]
