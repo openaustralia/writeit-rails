@@ -34,7 +34,20 @@ describe Message do
       message.recipients.should_not be_nil
       message.recipients[0].should eql 'recipient 1'
     end
+    it "can have several answers" do
+      answer1 = Answer.new
+      answer1.content = "answer 1"
 
+      answer2 = Answer.new
+      answer2.content = "answer 2"
+
+
+      message = Message.new
+      message.answers = [answer1, answer2]
+      message.answers.length.should eql 2
+      message.answers[0].content.should eql "answer 1"
+      message.answers[1].content.should eql "answer 2"
+    end
   end
   context "Interacting through the API" do
     before(:each) do

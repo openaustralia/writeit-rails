@@ -10,6 +10,7 @@ class Message
     attr_accessor :remote_id
     attr_accessor :author_name
     attr_accessor :author_email
+    attr_accessor :answers
 
     def validate
         
