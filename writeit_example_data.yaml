@@ -417,9 +417,9 @@
     username: admin
   model: auth.user
   pk: 1
-- fields: {allow_messages_using_form: true, moderation_needed_in_all_messages: false,
-    name: Monitoreo Parlamentario Chile, notify_owner_when_new_answer: false, owner: 1,
-    rate_limiter: 0, slug: monitoreo-parlamentario-chile}
+- fields: {
+    name: Monitoreo Parlamentario Chile, owner: 1,
+    slug: monitoreo-parlamentario-chile}
   model: nuntium.writeitinstance
   pk: 1
 - fields: {person: 1, writeitinstance: 1}
