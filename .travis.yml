@@ -1,5 +1,8 @@
 language:
   - ruby
+services:
+  - elasticsearch
+  - rabbitmq
 rvm:
   - 2.0.0
 env:
